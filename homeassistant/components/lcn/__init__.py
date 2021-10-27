@@ -100,7 +100,7 @@ async def async_setup_entry(
     # remove orphans from entity registry which are in ConfigEntry but were removed
     # from configuration.yaml
     if config_entry.source == config_entries.SOURCE_IMPORT:
-        entity_registry = await er.async_get_registry(hass)
+        entity_registry = er.async_get(hass)
         entity_registry.async_clear_config_entry(config_entry.entry_id)
 
     # forward config_entry to components
